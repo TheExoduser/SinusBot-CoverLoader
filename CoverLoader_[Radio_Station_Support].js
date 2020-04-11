@@ -62,8 +62,8 @@ registerPlugin({
 								var sres = JSON.parse(response.data);
 								if (sres && sres.data && sres.data.length > 0) {
 									var deezTrack = sres.data[0];
-									if (deezTrack.album && deezTrack.album.cover_medium) {
-										track.setThumbnailFromURL(deezTrack.album.cover_medium.substr(0, deezTrack.album.cover_medium.lastIndexOf(".")) + ".png");
+									if (deezTrack.album && deezTrack.album.cover_big) {
+										track.setThumbnailFromURL(deezTrack.album.cover_big.substr(0, deezTrack.album.cover_big.lastIndexOf(".")) + ".png");
 										if (config.setAsAvatar) {
 											avatarMiniCache = track.thumbnail();
 											var maxTries = 15;
@@ -89,6 +89,9 @@ registerPlugin({
 									}
 								} else {
 									engine.log('No cover art found!');
+									if (!engine.setAvatarFromTrack(track)) {
+										engine.setDefaultAvatar();
+ 									}
 								}
 							}
 						});
@@ -117,8 +120,8 @@ registerPlugin({
 						var sres = JSON.parse(response.data);
 						if (sres && sres.data && sres.data.length > 0) {
 							var deezTrack = sres.data[0];
-							if (deezTrack.album && deezTrack.album.cover_medium) {
-								track.setThumbnailFromURL(deezTrack.album.cover_medium.substr(0, deezTrack.album.cover_medium.lastIndexOf(".")) + ".png");
+							if (deezTrack.album && deezTrack.album.cover_big) {
+								track.setThumbnailFromURL(deezTrack.album.cover_big.substr(0, deezTrack.album.cover_big.lastIndexOf(".")) + ".png");
 								if (config.setAsAvatar) {
 									avatarMiniCache = track.thumbnail();
 									var maxTries = 15;
@@ -144,6 +147,9 @@ registerPlugin({
 							}
 						} else {
 							engine.log('No cover art found!');
+							if (!engine.setAvatarFromTrack(track)) {
+								engine.setDefaultAvatar();
+							}
 						}
 					}
 				});
