@@ -11,5 +11,6 @@ You can use this script just like the original. To update the script please do t
 The settings are the same as in the original script.
 
 **Hint**
+
 Unlike the original, this version of the script will set the avatar to the current track thumbnail in the SinusBot library (or nothing if the track has no thumbnail) if no thumbnail couldn't be found on Deezer.
 If you don't want this, and want to restore the original behaviour please remove the lines 92-94 and 151-153 from the script before you upload the file to your sinusbot/scripts directory.
